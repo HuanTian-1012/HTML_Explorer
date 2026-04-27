@@ -1,16 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-min-width: 800px;
-min-height: 500px;
-height: 100%;
-}
-
-.layout {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(177, 177, 177);
+body{
+    padding: 0;
+    margin: 0;
 }

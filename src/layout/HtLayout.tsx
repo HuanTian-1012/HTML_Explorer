@@ -3,6 +3,7 @@ import { Layout, Menu } from "antd";
 import type { MenuProps } from "antd";
 
 import "./HtLayout.css";
+import "../style/index.css"
 
 const { Sider, Content, Header } = Layout;
 

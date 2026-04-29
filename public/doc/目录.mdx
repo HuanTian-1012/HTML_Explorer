@@ -7,7 +7,7 @@ HTML 里的 `h1` 到 `h6` 是标题元素，用来表达内容层级。
 
 下面这个例子里，`h1` 是页面主标题，`h2` 是章节标题，`h3` 是章节下的小节标题。
 
-:::code{html="<main><h1>HTML 标题元素指南</h1><p>理解 h1 到 h6 的结构意义。</p><section><h2>为什么标题重要</h2><p>标题能帮助用户快速理解页面结构。</p><h3>对读者的价值</h3><p>阅读时可以更快定位重点。</p></section></main>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;line-height:1.6;color:#0f172a;}main{max-width:720px;margin:0 auto;}h1{margin:0 0 12px;font-size:40px;color:#0f172a;}h2{margin:32px 0 8px;font-size:28px;color:#1d4ed8;}h3{margin:20px 0 8px;font-size:22px;color:#2563eb;}p{margin:0;color:#475569;}" js=""}
+:::code{html="<main>&#10;  <h1>HTML 标题元素指南</h1>&#10;  <p>理解 h1 到 h6 的结构意义。</p>&#10;  <section>&#10;    <h2>为什么标题重要</h2>&#10;    <p>标题能帮助用户快速理解页面结构。</p>&#10;    <h3>对读者的价值</h3>&#10;    <p>阅读时可以更快定位重点。</p>&#10;  </section>&#10;</main>" css="body{&#10;  font-family:'Segoe UI',sans-serif;&#10;  padding:24px;&#10;  line-height:1.6;&#10;  color:#0f172a;&#10;}&#10;main{&#10;  max-width:720px;&#10;  margin:0 auto;&#10;}&#10;h1{&#10;  margin:0 0 12px;&#10;  font-size:40px;&#10;  color:#0f172a;&#10;}&#10;h2{&#10;  margin:32px 0 8px;&#10;  font-size:28px;&#10;  color:#1d4ed8;&#10;}&#10;h3{&#10;  margin:20px 0 8px;&#10;  font-size:22px;&#10;  color:#2563eb;&#10;}&#10;p{&#10;  margin:0;&#10;  color:#475569;&#10;}" js=""}
 :::
 
 ## `h1` 到 `h6` 分别表示什么
@@ -35,7 +35,7 @@ HTML 里的 `h1` 到 `h6` 是标题元素，用来表达内容层级。
 
 一个结构清晰的页面，标题层级通常是连续递进的。
 
-:::code{html="<article><h1>前端学习路线</h1><section><h2>HTML 基础</h2><h3>常用标签</h3><p>先理解语义化标签，再处理样式。</p><h3>表单与交互</h3><p>掌握输入、提交和校验的基础结构。</p></section><section><h2>CSS 基础</h2><h3>选择器</h3><p>理解类、后代、伪类等常见选择器。</p></section></article>" css="body{font-family:'Segoe UI',sans-serif;background:#f8fafc;padding:24px;}article{max-width:720px;margin:0 auto;padding:28px;border-radius:18px;background:#ffffff;box-shadow:0 18px 40px rgba(15,23,42,0.08);}h1{margin:0 0 20px;font-size:36px;}h2{margin:24px 0 10px;font-size:26px;color:#0f766e;}h3{margin:16px 0 8px;font-size:20px;color:#0f172a;}p{margin:0;color:#475569;line-height:1.7;}" js=""}
+:::code{html="<article>&#10;  <h1>前端学习路线</h1>&#10;  <section>&#10;    <h2>HTML 基础</h2>&#10;    <h3>常用标签</h3>&#10;    <p>先理解语义化标签，再处理样式。</p>&#10;    <h3>表单与交互</h3>&#10;    <p>掌握输入、提交和校验的基础结构。</p>&#10;  </section>&#10;  <section>&#10;    <h2>CSS 基础</h2>&#10;    <h3>选择器</h3>&#10;    <p>理解类、后代、伪类等常见选择器。</p>&#10;  </section>&#10;</article>" css="body{&#10;  font-family:'Segoe UI',sans-serif;&#10;  background:#f8fafc;&#10;  padding:24px;&#10;}&#10;article{&#10;  max-width:720px;&#10;  margin:0 auto;&#10;  padding:28px;&#10;  border-radius:18px;&#10;  background:#ffffff;&#10;  box-shadow:0 18px 40px rgba(15,23,42,0.08);&#10;}&#10;h1{&#10;  margin:0 0 20px;&#10;  font-size:36px;&#10;}&#10;h2{&#10;  margin:24px 0 10px;&#10;  font-size:26px;&#10;  color:#0f766e;&#10;}&#10;h3{&#10;  margin:16px 0 8px;&#10;  font-size:20px;&#10;  color:#0f172a;&#10;}&#10;p{&#10;  margin:0;&#10;  color:#475569;&#10;  line-height:1.7;&#10;}" js=""}
 :::
 
 从这个例子可以看出：
@@ -90,7 +90,7 @@ HTML 里的 `h1` 到 `h6` 是标题元素，用来表达内容层级。
 
 下面这个例子里，视觉上看起来没问题，但结构是混乱的：它直接从 `h1` 跳到 `h4`，而且把普通说明文本也写成了标题。
 
-:::code{html="<section><h1>商品详情页</h1><h4>限时优惠</h4><h2>商品信息</h2><h5>这其实只是一段提示文案</h5><p>如果只是提示，就不该使用标题元素。</p></section>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#fff7ed;}section{max-width:680px;margin:0 auto;padding:24px;border:1px solid #fdba74;border-radius:16px;background:#ffffff;}h1{margin:0 0 12px;font-size:34px;}h2{margin:24px 0 8px;font-size:24px;color:#9a3412;}h4{margin:0 0 8px;font-size:20px;color:#ea580c;}h5{margin:18px 0 8px;font-size:18px;color:#c2410c;}p{margin:0;color:#7c2d12;line-height:1.7;}" js=""}
+:::code{html="<section>&#10;  <h1>商品详情页</h1>&#10;  <h4>限时优惠</h4>&#10;  <h2>商品信息</h2>&#10;  <h5>这其实只是一段提示文案</h5>&#10;  <p>如果只是提示，就不该使用标题元素。</p>&#10;</section>" css="body{&#10;  font-family:'Segoe UI',sans-serif;&#10;  padding:24px;&#10;  background:#fff7ed;&#10;}&#10;section{&#10;  max-width:680px;&#10;  margin:0 auto;&#10;  padding:24px;&#10;  border:1px solid #fdba74;&#10;  border-radius:16px;&#10;  background:#ffffff;&#10;}&#10;h1{&#10;  margin:0 0 12px;&#10;  font-size:34px;&#10;}&#10;h2{&#10;  margin:24px 0 8px;&#10;  font-size:24px;&#10;  color:#9a3412;&#10;}&#10;h4{&#10;  margin:0 0 8px;&#10;  font-size:20px;&#10;  color:#ea580c;&#10;}&#10;h5{&#10;  margin:18px 0 8px;&#10;  font-size:18px;&#10;  color:#c2410c;&#10;}&#10;p{&#10;  margin:0;&#10;  color:#7c2d12;&#10;  line-height:1.7;&#10;}" js=""}
 :::
 
 这个例子的问题在于：

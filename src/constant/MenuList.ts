@@ -1,5 +1,6 @@
 const MenuList: MenuListType[] = [{
     id:1,
+    path:'/test',
     name:'测试1'
 }];
 

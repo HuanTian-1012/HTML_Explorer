@@ -6,10 +6,13 @@ import SpanDocument from "../views/elements/span";
 import PDocument from "../views/elements/p";
 import H1Document from "../views/elements/h1";
 
+import initCore from "../core/init";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HtLayout />,
+
     children: [
       {
         path: "/",

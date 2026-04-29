@@ -1,0 +1,15 @@
+# HTML `button` 元素
+
+`button` 表示一个可触发动作的控件。  
+它适合提交、确认、切换状态、打开弹窗，而不是承担页面跳转职责。
+
+## 一个交互示例
+
+:::code{html="<div class='panel'><p id='text'>当前模式：普通</p><button id='toggle'>切换模式</button></div>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#f8fafc;} .panel{max-width:420px;margin:0 auto;padding:24px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(15,23,42,0.08);text-align:center;} p{margin:0 0 16px;color:#334155;font-size:18px;} button{border:none;border-radius:999px;padding:12px 20px;background:#0f172a;color:#fff;font-size:16px;cursor:pointer;} button:hover{background:#1e293b;}" js="const text = document.getElementById('text'); const button = document.getElementById('toggle'); let active = false; button.addEventListener('click', () => { active = !active; text.textContent = `当前模式：${active ? '高亮' : '普通'}`; });"}
+:::
+
+## 使用建议
+
+- 触发动作就用 `button`
+- 需要提交表单时设置正确的 `type`
+- 只做跳转时优先用 `a`

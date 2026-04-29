@@ -1,20 +1,46 @@
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { Layout, Menu } from "antd";
+import type { MenuProps } from "antd";
+
 import "./HtLayout.css";
 
-const { Sider, Content,Header } = Layout;
+const { Sider, Content, Header } = Layout;
 
-const menuItems = [
-  { key: "/", label: "首页" },
-  { key: "/element/p", label: "p 标签" },
-  { key: "/element/h1", label: "h1 标签" },
-  { key: "/element/div", label: "div 标签" },
-  { key: "/element/span", label: "span 标签" },
-];
+interface PathConfig {
+  path: string;
+  title: string;
+  children: PathConfig[];
+}
 
-export default function HtLayout() {
+interface HtLayoutProps {
+  routerConfig: PathConfig[];
+}
+
+function transformMenuItems(
+  routerConfig: PathConfig[],
+  parentKey = "group",
+): NonNullable<MenuProps["items"]> {
+  return routerConfig.map((item, index) => {
+    const currentKey = item.path || `${parentKey}-${index}-${item.title}`;
+    const children = item.children.length
+      ? transformMenuItems(item.children, currentKey)
+      : undefined;
+
+    return {
+      key: currentKey,
+      label: item.title,
+      children,
+    };
+  });
+}
+
+export default function HtLayout({ routerConfig }: HtLayoutProps) {
   const navigate = useNavigate();
   const location = useLocation();
+  const menuItems: MenuProps["items"] = [
+    { key: "/", label: "首页" },
+    ...transformMenuItems(routerConfig),
+  ];
 
   return (
     <Layout className="layout">
@@ -25,7 +51,12 @@ export default function HtLayout() {
             className="menu"
             selectedKeys={[location.pathname]}
             items={menuItems}
-            onClick={({ key }) => navigate(key)}
+            mode='inline'
+            onClick={({ key }) => {
+              if (typeof key === "string" && key.startsWith("/")) {
+                navigate(key);
+              }
+            }}
           />
         </Sider>
         <Content>

@@ -1,0 +1,15 @@
+# HTML `ul` 与 `li`
+
+当一组内容天然就是并列项时，应该使用列表结构，而不是手动在段落前写破折号。  
+`ul` 表示无序列表，`li` 表示列表项。
+
+## 一个示例
+
+:::code{html="<section><h1>前端学习清单</h1><ul><li>理解 HTML 语义标签</li><li>掌握 CSS 布局与响应式</li><li>练习 JavaScript 基础交互</li></ul></section>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#fefce8;color:#422006;} section{max-width:700px;margin:0 auto;padding:24px;border-radius:18px;background:#fff;} h1{margin:0 0 16px;font-size:32px;} ul{margin:0;padding-left:24px;} li{margin:10px 0;line-height:1.7;}" js=""}
+:::
+
+## 为什么要用列表语义
+
+1. 浏览器和辅助技术都能更准确理解结构。
+2. 后续想切换成有序列表时更容易调整。
+3. 样式和内容结构解耦，不需要手动输入装饰符号。

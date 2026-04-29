@@ -1,0 +1,105 @@
+# HTML `h` 元素
+
+HTML 里的 `h1` 到 `h6` 是标题元素，用来表达内容层级。  
+它们的职责是告诉浏览器、搜索引擎和辅助技术：“这段内容在整篇页面结构里处于哪一级”。
+
+## 先看一个最小示例
+
+下面这个例子里，`h1` 是页面主标题，`h2` 是章节标题，`h3` 是章节下的小节标题。
+
+:::code{html="<main><h1>HTML 标题元素指南</h1><p>理解 h1 到 h6 的结构意义。</p><section><h2>为什么标题重要</h2><p>标题能帮助用户快速理解页面结构。</p><h3>对读者的价值</h3><p>阅读时可以更快定位重点。</p></section></main>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;line-height:1.6;color:#0f172a;}main{max-width:720px;margin:0 auto;}h1{margin:0 0 12px;font-size:40px;color:#0f172a;}h2{margin:32px 0 8px;font-size:28px;color:#1d4ed8;}h3{margin:20px 0 8px;font-size:22px;color:#2563eb;}p{margin:0;color:#475569;}" js=""}
+:::
+
+## `h1` 到 `h6` 分别表示什么
+
+- `h1`：当前页面或当前内容区域里最重要的标题
+- `h2`：`h1` 下的主要章节
+- `h3`：`h2` 下的子章节
+- `h4` 到 `h6`：继续向下细分层级
+
+它们不是“六种不同大小的字”，而是六级标题语义。
+
+## 为什么不能只把它当样式标签
+
+很多初学者第一次接触 `h` 元素时，只看到默认字号变大，于是把它当成“加粗放大文本”的快捷方式。这种理解是错的。
+
+标题元素的主要价值有三个：
+
+1. 帮助用户快速扫读页面结构。
+2. 帮助屏幕阅读器按标题层级导航内容。
+3. 帮助搜索引擎理解页面重点和内容组织方式。
+
+如果你只是想让一段字变大，应该优先使用 CSS，而不是误用标题标签。
+
+## 合理的层级长什么样
+
+一个结构清晰的页面，标题层级通常是连续递进的。
+
+:::code{html="<article><h1>前端学习路线</h1><section><h2>HTML 基础</h2><h3>常用标签</h3><p>先理解语义化标签，再处理样式。</p><h3>表单与交互</h3><p>掌握输入、提交和校验的基础结构。</p></section><section><h2>CSS 基础</h2><h3>选择器</h3><p>理解类、后代、伪类等常见选择器。</p></section></article>" css="body{font-family:'Segoe UI',sans-serif;background:#f8fafc;padding:24px;}article{max-width:720px;margin:0 auto;padding:28px;border-radius:18px;background:#ffffff;box-shadow:0 18px 40px rgba(15,23,42,0.08);}h1{margin:0 0 20px;font-size:36px;}h2{margin:24px 0 10px;font-size:26px;color:#0f766e;}h3{margin:16px 0 8px;font-size:20px;color:#0f172a;}p{margin:0;color:#475569;line-height:1.7;}" js=""}
+:::
+
+从这个例子可以看出：
+
+- `h1` 定义主题
+- `h2` 拆分主要章节
+- `h3` 继续细化章节内容
+
+这才是标题元素应该服务的核心目标：结构，而不是视觉。
+
+## 常见误区
+
+### 1. 只为了字号大而使用标题
+
+错误示例：
+
+```html
+<h3>这段字看起来比较醒目</h3>
+```
+
+如果它不是一个“三级标题”，那就不应该用 `h3`。
+
+### 2. 标题层级跳级
+
+不推荐这样写：
+
+```html
+<h1>页面标题</h1>
+<h3>直接跳到三级标题</h3>
+```
+
+更合理的写法：
+
+```html
+<h1>页面标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+```
+
+### 3. 一个页面出现多个互相竞争的主标题
+
+页面可以有复杂结构，但通常应该先想清楚谁是当前页面最核心的主题，再决定 `h1` 放在哪里。
+
+## 实际使用建议
+
+- 先画内容结构，再选 `h1` 到 `h6`
+- 优先保证层级关系正确，再考虑视觉样式
+- 不要为了“看起来更大”而滥用标题标签
+- 样式交给 CSS，语义交给 HTML
+
+## 对比一个错误示例
+
+下面这个例子里，视觉上看起来没问题，但结构是混乱的：它直接从 `h1` 跳到 `h4`，而且把普通说明文本也写成了标题。
+
+:::code{html="<section><h1>商品详情页</h1><h4>限时优惠</h4><h2>商品信息</h2><h5>这其实只是一段提示文案</h5><p>如果只是提示，就不该使用标题元素。</p></section>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#fff7ed;}section{max-width:680px;margin:0 auto;padding:24px;border:1px solid #fdba74;border-radius:16px;background:#ffffff;}h1{margin:0 0 12px;font-size:34px;}h2{margin:24px 0 8px;font-size:24px;color:#9a3412;}h4{margin:0 0 8px;font-size:20px;color:#ea580c;}h5{margin:18px 0 8px;font-size:18px;color:#c2410c;}p{margin:0;color:#7c2d12;line-height:1.7;}" js=""}
+:::
+
+这个例子的问题在于：
+
+- 标题层级跳跃，阅读结构不自然
+- 普通提示文案误用了标题语义
+- 页面信息组织不清晰
+
+## 总结
+
+`h1` 到 `h6` 的本质是语义化标题层级，不是字号工具。  
+写页面时，先问自己“这段内容属于第几层结构”，再决定用哪个 `h` 元素，这样写出来的页面才更清晰、更可维护。  

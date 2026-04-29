@@ -1,0 +1,20 @@
+# HTML `div` 元素
+
+`div` 是最常见的通用容器标签，本身没有特殊语义。  
+它适合用来组织布局、包裹组件、做分组，但不应该替代本来就有明确语义的标签。
+
+## 一个布局示例
+
+:::code{html="<div class='card-grid'><div class='card'><h2>公告</h2><p>本周五晚上十点开始系统维护。</p></div><div class='card'><h2>更新</h2><p>编辑器新增了示例代码预览能力。</p></div></div>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#eef2ff;} .card-grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;} .card{padding:20px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(79,70,229,0.12);} h2{margin:0 0 10px;font-size:24px;color:#312e81;} p{margin:0;line-height:1.7;color:#475569;}" js=""}
+:::
+
+## 为什么 `div` 常见
+
+1. 它对布局很友好。
+2. 配合 class 可以快速建立样式作用域。
+3. 在组件化开发里，很多外层包装都需要一个稳定容器。
+
+## 什么时候不该用它
+
+如果内容本身已经是标题、导航、列表、文章、按钮，就应该优先选对应语义标签。  
+`div` 是兜底容器，不是默认答案。

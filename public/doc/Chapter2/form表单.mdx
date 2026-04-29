@@ -1,0 +1,19 @@
+# HTML `form` 元素
+
+`form` 用来承载一组需要提交的数据。  
+输入框、选择框、提交按钮只有放在表单语义里，浏览器和辅助技术才能更完整地理解交互目标。
+
+## 一个示例
+
+:::code{html="<form class='form'><label>邮箱<input type='email' placeholder='name@example.com'></label><label>昵称<input type='text' placeholder='请输入昵称'></label><button type='submit'>提交</button></form>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#f0fdf4;} .form{max-width:420px;margin:0 auto;padding:24px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(22,101,52,0.08);display:grid;gap:16px;} label{display:grid;gap:8px;color:#166534;font-weight:600;} input{padding:12px 14px;border:1px solid #bbf7d0;border-radius:12px;font-size:15px;} button{border:none;border-radius:12px;padding:12px 16px;background:#166534;color:#fff;font-size:16px;cursor:pointer;}" js="document.querySelector('.form')?.addEventListener('submit', (event) => { event.preventDefault(); alert('表单已提交'); });"}
+:::
+
+## 结构重点
+
+1. 表单负责组织提交范围。
+2. `label` 负责建立可访问的说明关系。
+3. `button type='submit'` 负责触发提交。
+
+## 总结
+
+表单不是单个输入框的集合，而是一段完整的数据收集流程。

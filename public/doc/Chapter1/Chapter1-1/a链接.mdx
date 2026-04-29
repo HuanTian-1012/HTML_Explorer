@@ -1,0 +1,19 @@
+# HTML `a` 元素
+
+`a` 元素用来创建超链接。  
+它的核心职责是把用户从当前位置带到另一个资源，无论目标是页面、文件、锚点还是外部站点。
+
+## 一个示例
+
+:::code{html="<main><h1>快速入口</h1><p>查看 <a href='#guide'>使用指南</a>，或直接访问 <a href='https://developer.mozilla.org/' target='_blank' rel='noreferrer'>MDN</a>。</p><section id='guide'><h2>使用指南</h2><p>这里演示锚点跳转目标。</p></section></main>" css="body{font-family:'Segoe UI',sans-serif;padding:24px;background:#fff;} main{max-width:720px;margin:0 auto;line-height:1.8;color:#0f172a;} a{color:#2563eb;text-decoration:none;font-weight:600;} a:hover{text-decoration:underline;} section{margin-top:48px;padding:20px;border-radius:16px;background:#eff6ff;} h1,h2{margin:0 0 12px;}" js=""}
+:::
+
+## 使用建议
+
+- 有跳转行为时才使用 `a`
+- 新窗口打开外链时，补上 `rel`
+- 不要把纯按钮行为误写成链接
+
+## 总结
+
+链接的重点是“导航到目标资源”，不是“看起来像蓝色文字”。

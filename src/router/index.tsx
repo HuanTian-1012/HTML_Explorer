@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import HtLayout from "../layout/HtLayout";
+import Index from "../layout";
 
 import initCore from "../core/init";
 
@@ -8,7 +8,7 @@ async function initRouter() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HtLayout routerConfig={routerConfig} />,
+      element: <Index routerConfig={routerConfig} />,
       children: routerConfig,
     },
   ]);

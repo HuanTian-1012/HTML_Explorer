@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";
 import initRouter from "./router";
 import { ConfigProvider } from "antd";
-import "./App.css";
+import "./style/layout.css";
+import "./style/scrollbar.css";
 
 // 应用初始化
 async function init() {
@@ -13,7 +14,7 @@ async function init() {
   // 渲染应用
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <ConfigProvider theme={'dark'}>
+      <ConfigProvider>
         <RouterProvider router={router} />
       </ConfigProvider>
     </StrictMode>,

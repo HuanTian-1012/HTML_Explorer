@@ -1,24 +1,25 @@
-import initElement from "./initElement"
-import initPath from "./initPath"
+import type { ReactNode } from "react";
+
+import initElement from "./initElement";
+import initPath, { type RouterPathConfig } from "./initPath";
 
 type RouteNode = {
-  path?: string
-  title?: string
-  element?: React.ReactNode
-  children?: RouteNode[]
-  index?: boolean
+  path: string
+  title: string
+  element?: ReactNode
+  children: RouteNode[]
   directoryPath?: string[]
-}
+};
 
 type ElementConfig = {
   filePath: string[]
   title: string
-  element: React.ReactNode
-}
+  element: ReactNode
+};
 
 
 /** 默认导出 */
-export default async function initCore() {
+export default async function initCore(): Promise<RouteNode[]> {
   const pathConfig = await initPath();
   const elementConfig = await initElement();
   console.log("pathConfig", pathConfig);
@@ -26,43 +27,44 @@ export default async function initCore() {
   const res = mergeElementToChildren(pathConfig, elementConfig);
   console.log(res);
   return stripDirectoryPath(res);
-  return []
 }
 
 
 /** 数据合成 */
 function mergeElementToChildren(
-  pathConfig: RouteNode[],
+  pathConfig: RouterPathConfig[],
   elementConfig: ElementConfig[]
-) {
+): RouteNode[] {
+  const routeTree: RouteNode[] = pathConfig as RouteNode[];
+
   for (const item of elementConfig) {
     // filePath 为空，追加到根级
     if (item.filePath.length === 0) {
-      pathConfig.push({
+      routeTree.push({
         path: buildElementRoutePath("", item.title),
         title: item.title,
         element: item.element,
+        children: [],
       })
       continue
     }
 
-    const target = findNodeByPath(pathConfig, item.filePath)
+    const target = findNodeByPath(routeTree, item.filePath)
 
     if (!target) {
       console.warn("没有找到对应目录：", item.filePath)
       continue
     }
 
-    target.children ??= []
-
     target.children.push({
       path: buildElementRoutePath(target.path, item.title),
       title: item.title,
       element: item.element,
+      children: [],
     })
   }
 
-  return pathConfig
+  return routeTree
 }
 
 function buildElementRoutePath(parentPath = "", title: string) {

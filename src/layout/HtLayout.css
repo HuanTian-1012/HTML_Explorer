@@ -1,15 +1,22 @@
 .layout {
   height: 100vh;
-  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 .sider {
-  background-color: rgba(255, 255, 255, 0);
+  overflow: auto;
+  height: 100%;
 }
+
 .menu {
-  background-color: rgba(146, 146, 218, 0);
   height: 100%;
 }
 .content {
   height: 100%;
+  overflow: auto;
   padding: 10px;
 }

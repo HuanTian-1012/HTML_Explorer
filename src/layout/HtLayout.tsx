@@ -43,28 +43,28 @@ export default function HtLayout({ routerConfig }: HtLayoutProps) {
   ];
 
   return (
-    <Layout className="layout">
-      <Header>123</Header>
-      <Layout>
-        <Sider className="sider">
-          <Menu
-            className="menu"
-            selectedKeys={[location.pathname]}
-            items={menuItems}
-            mode='inline'
-            onClick={({ key }) => {
-              if (typeof key === "string" && key.startsWith("/")) {
-                navigate(key);
-              }
-            }}
-          />
-        </Sider>
-        <Content>
-          <div className="content">
-            <Outlet />
-          </div>
-        </Content>
+      <Layout className="layout">
+        <Header className="header">123</Header>
+        <Layout>
+          <Sider className="sider">
+            <Menu
+              className="menu"
+              selectedKeys={[location.pathname]}
+              items={menuItems}
+              mode="inline"
+              onClick={({ key }) => {
+                if (typeof key === "string" && key.startsWith("/")) {
+                  navigate(key);
+                }
+              }}
+            />
+          </Sider>
+          <Content>
+            <div className="content">
+              <Outlet />
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
   );
 }

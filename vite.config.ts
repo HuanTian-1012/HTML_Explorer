@@ -7,7 +7,7 @@ import remarkDirective from "remark-directive";
 /** 自定义MD语法处理函数 */
 import remarkDirectiveNote from "./src/utils/remark-directive-note";
 /** 代码块美化 */
-// import rehypePrettyCode from "rehype-pretty-code";
+import rehypePrettyCode from "rehype-pretty-code";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,14 +15,14 @@ export default defineConfig({
     react(),
     mdx({
       remarkPlugins: [remarkDirective, remarkDirectiveNote],
-      // rehypePlugins: [
-      //   [
-      //     rehypePrettyCode,
-      //     {
-      //       theme: "one-dark-pro",
-      //     },
-      //   ],
-      // ],
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          {
+            theme: "one-dark-pro",
+          },
+        ],
+      ],
     }),
   ],
 });

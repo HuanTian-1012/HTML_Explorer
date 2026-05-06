@@ -3,13 +3,7 @@ body {
   margin: 0;
 }
 
-
 html {
   scrollbar-gutter: stable;
   scroll-behavior: smooth;
-}
-
-.icon svg {
-  height: 20px;
-  width: 20px;
 }

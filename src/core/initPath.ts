@@ -1,37 +1,15 @@
-/** 配置文件格式 */
-export interface PathConfig {
-    name: string; // 路由名称
-    path: string; // 路由路径，例如 "/index"
-}
+import type { PathConfigItem, PathConfig, RouterPathConfig } from "./type";
 
-/** 配置文件处理格式 */
-export interface PathConfigItem {
-    filePath: string[]; // 文件路径分段数组，例如 ["src", "views", "Index.tsx"]
-    config: {
-        name: string; // 路由名称
-        path: string; // 路由路径，例如 "/index"
-    };
-}
-
-/** 路由路径配置格式 */
-export interface RouterPathConfig {
-    path: string; // 路由路径
-    title: string; // 路由名称
-    children: RouterPathConfig[];
-    directoryPath?: string[]; // 内部使用的目录链路
-}
-
-/** 路由路径临时配置格式 */
-export interface RouterPathTempConfig extends RouterPathConfig {
-    _key: string; // 内部标识
-    children: RouterPathTempConfig[];
+/** 构建树过程中的临时类型，仅内部使用 */
+interface RouterPathTempConfig extends RouterPathConfig {
+  _key: string;
+  children: RouterPathTempConfig[];
 }
 
 export default async function initPath() {
-    /** ====================  Step1:获取文件列表  ==================== */
+    // 使用Vite的glob功能读取public目录下的所有json文件
     const publicConfigList = import.meta.glob("/public/**/*.json");
 
-    /** ====================  Step2:读取列表配置  ==================== */
     // 读取每个配置文件的内容，并将其转换成统一的格式，包含文件路径和配置项
     const handelConfigList: PathConfigItem[] = await Promise.all(
         Object.entries(publicConfigList).map(async ([path, config]) => {
@@ -46,13 +24,12 @@ export default async function initPath() {
         }),
     );
 
-    /** ====================  Step3:排序配置列表  ==================== */
     // 根据文件路径长度进行排序，确保父级路径在子级路径之前
     const sortedConfigList: PathConfigItem[] = handelConfigList.sort((a, b) => {
         return a.filePath.length - b.filePath.length;
     });
 
-    /** ====================  Step4:生成路由配置  ==================== */
+    // 调用方法,将扁平数据转换成树状结构
     return buildTree(sortedConfigList);
 }
 
@@ -95,19 +72,19 @@ function buildTree(pathConfig: PathConfigItem[]): RouterPathConfig[] {
         });
     }
 
+
+    // 辅助函数:路径拼接
     function joinRoutePath(parentPath: string, currentPath: string): string {
         if (!currentPath) {
             return parentPath;
         }
-
         if (!parentPath) {
             return currentPath;
         }
-
         return `${parentPath.replace(/\/$/, "")}/${currentPath.replace(/^\//, "")}`;
     }
 
-    // 去掉内部字段
+    // 辅助函数:去掉临时字段"_key"
     function clean(nodes: RouterPathTempConfig[], parentPath = ""): RouterPathConfig[] {
         return nodes.map((node) => ({
             path: joinRoutePath(parentPath, node.path),

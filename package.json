@@ -17,6 +17,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router": "^7.13.2",
+    "rehype-pretty-code": "^0.14.3",
     "remark-directive": "^4.0.0",
     "unist-util-visit": "^5.1.0"
   },

@@ -6,9 +6,8 @@ import { ConfigProvider } from "antd";
 import "./style/layout.css";
 import "./style/scrollbar.css";
 
-// 应用初始化
 async function init() {
-  // 初始化路由
+  // 先等待路由初始化
   const router = await initRouter();
 
   // 渲染应用
@@ -20,4 +19,6 @@ async function init() {
     </StrictMode>,
   );
 }
+
+// 启动应用
 init();

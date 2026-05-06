@@ -18,7 +18,7 @@ export default function CodeEditor({
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-${html}    
+${html||'<h1> Ciallo </h1>'}    
 </body>
 </html>`,
     "index.css": `${css}`,

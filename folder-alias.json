@@ -1,1 +1,23 @@
-{}
+{
+    "src/router": {
+        "description": "路由配置"
+    },
+    "src/utils": {
+        "description": "md自定义渲染"
+    },
+    "src/utils/remark-directive-note.ts": {
+        "description": "md自定义渲染"
+    },
+    "src/components/CodeEditor.tsx": {
+        "description": "代码编辑器"
+    },
+    "src/core/init.ts": {
+        "description": "核心方法"
+    },
+    "src/core/initPath.ts": {
+        "description": "路由处理"
+    },
+    "src/core/initElement.ts": {
+        "description": "组件处理"
+    }
+}

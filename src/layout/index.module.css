@@ -1,0 +1,20 @@
+/** ====================  布局  ==================== */
+.layout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sider {
+  overflow: auto;
+  height: 100%;
+  background: #ffffff;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: #ffffff;
+  position: relative;
+  padding-inline:10px 164px
+}

@@ -1,22 +1,16 @@
 import { Button, Layout } from "antd";
-import "./header.css";
+import style from "./header.module.css";
 
 const { Header: AntdHeader } = Layout;
 
-export default function Header({ className }: { className?: string }) {
+export default function Header() {
   return (
-    <AntdHeader className={className}>
-      <div className="header-content">
+    <AntdHeader className={style.background}>
+      <div className={style.content}>
         <div>HTML Explorer</div>
-        <div className="header-actions">
-          <Button
-            type="text"
-            size="large"
-          />
-          <Button
-            type="text"
-            size="large"
-          />
+        <div className={style.actions}>
+          <Button type="text" size="large" />
+          <Button type="text" size="large" />
         </div>
       </div>
     </AntdHeader>

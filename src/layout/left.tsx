@@ -1,7 +1,7 @@
 import { Menu } from "antd";
 import type { MenuProps } from "antd";
 
-import "./left.css";
+import style from "./left.module.css";
 import { useNavigate } from "react-router";
 import type { RouterPathConfig } from "../core/type";
 
@@ -43,7 +43,7 @@ export default function Left({ routerConfig, selectedKeys }: LeftProps) {
 
   return (
     <Menu
-      className="menu"
+      className={style.menu}
       selectedKeys={selectedKeys}
       items={menuItems}
       mode="inline"

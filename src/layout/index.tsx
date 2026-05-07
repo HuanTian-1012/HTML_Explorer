@@ -1,38 +1,42 @@
 import { useRef } from "react";
-import { Outlet } from "react-router";
-import { Layout } from "antd";
+import { Outlet, useLocation } from "react-router";
+import { Card, Layout } from "antd";
 import type { RouterPathConfig } from "../core/type";
 
-import "./index.css";
+import style from "./index.module.css";
 import Header from "./header";
 import Left from "./left";
 import Right from "./right";
 
 const { Sider, Content } = Layout;
-export default function Index({ routerConfig }: { routerConfig: RouterPathConfig[] }) {
+export default function Index({
+  routerConfig,
+}: {
+  routerConfig: RouterPathConfig[];
+}) {
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
 
   return (
-    <Layout className="layout">
-      <Header className="header" />
+    <Layout className={style.layout}>
+      <Header />
       <Layout>
         {/* 左侧菜单栏 */}
-        <Sider className="sider">
+        <Sider className={style.sider}>
           <Left
             routerConfig={routerConfig}
-            selectedKeys={[location.pathname]}
+            selectedKeys={[decodeURIComponent(location.pathname)]}
           />
         </Sider>
         {/* 内容区域 */}
-        <Content className="content">
+        <Content className={style.content}>
+          <Right contentRef={contentRef} />
           <div ref={contentRef}>
-            <Outlet />
+            <Card hoverable={true}>
+              <Outlet />
+            </Card>
           </div>
         </Content>
-        {/* 右侧内容栏 */}
-        <Sider className="sider">
-          <Right contentRef={contentRef} />
-        </Sider>
       </Layout>
     </Layout>
   );

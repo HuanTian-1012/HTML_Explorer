@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Index from "../layout";
+import HomePage from "../pages/home";
 
 import initCore from "../core/init";
 
@@ -9,7 +10,13 @@ async function initRouter() {
     {
       path: "/",
       element: <Index routerConfig={routerConfig} />,
-      children: routerConfig,
+      children: [
+        {
+          index: true,
+          element: <HomePage routerConfig={routerConfig} />,
+        },
+        ...routerConfig,
+      ],
     },
   ]);
   return router;

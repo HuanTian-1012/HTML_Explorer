@@ -1,10 +1,8 @@
 import { useEffect, useState, type RefObject } from "react";
-import { Anchor, Typography } from "antd";
+import { Affix, Anchor } from "antd";
+import style from "./right.module.css";
 
-import "./right.css";
 import { useLocation } from "react-router";
-
-const { Text } = Typography;
 
 interface HeadingItem {
   key: string;
@@ -65,13 +63,12 @@ export default function Right({ contentRef }: RightProps) {
       observer.disconnect();
     };
   }, [location.pathname, contentRef]);
-  
+
   return (
-    <div className="tocCard">
-      <Text className="tocTitle">本文目录</Text>
+    <div className={style.background}>
       <Anchor
+      
         getContainer={() => contentRef.current?.parentElement || window}
-        className="tocAnchor"
         items={headingItems.map((item) => ({
           key: item.key,
           href: item.href,
@@ -81,7 +78,6 @@ export default function Right({ contentRef }: RightProps) {
             </span>
           ),
         }))}
-        offsetTop={80}
       />
     </div>
   );
